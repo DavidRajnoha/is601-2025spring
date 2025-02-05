@@ -1,17 +1,23 @@
+from calculator.calculation import Calculation
 from calculator.operations import add, subtract, multiply, divide
 
 class Calculator:
     @staticmethod
+    def perform_operation(operation, a: float, b: float) -> float:
+        calculation = Calculation(operation, a, b)
+        return calculation.perform_operation()
+
+    @staticmethod
     def add(a: float, b: float) -> float:
-        return add(a,b)
+        return Calculator.perform_operation(add, a, b)
 
     @staticmethod
     def subtract(a: float, b: float) -> float:
-        return subtract(a,b)
+        return Calculator.perform_operation(subtract, a, b)
 
     @staticmethod
     def multiply(a: float, b: float) -> float:
-        return multiply(a,b)
+        return Calculator.perform_operation(multiply, a, b)
 
     @staticmethod
     def divide(a: float, b: float) -> float:
@@ -28,4 +34,4 @@ class Calculator:
         Raises:
             ZeroDivisionError: If b is zero.
         """
-        return divide(a, b)
+        return Calculator.perform_operation(divide, a, b)
