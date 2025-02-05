@@ -1,4 +1,4 @@
-from calculator.opertions import add, subtract, multiply, divide
+from calculator.operations import add, subtract, multiply, divide
 
 class Calculator:
     @staticmethod
@@ -15,5 +15,17 @@ class Calculator:
 
     @staticmethod
     def divide(a: float, b: float) -> float:
-        return divide(a,b)
+        """
+        Divides a by b.
 
+        Args:
+            a (float): Numerator.
+            b (float): Denominator.
+
+        Returns:
+            float: The result of the division.
+
+        Raises:
+            ZeroDivisionError: If b is zero.
+        """
+        return divide(a, b)
