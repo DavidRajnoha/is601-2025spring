@@ -33,6 +33,13 @@ class CalculationHistory:
         )
 
     @staticmethod
+    def get_last() -> Calculation:
+        """
+        Returns the last calculation in the history.
+        """
+        return CalculationHistory._history.get_items()[-1]
+
+    @staticmethod
     def clear_history() -> None:
         """
         Clears all calculations from the history.
