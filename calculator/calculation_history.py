@@ -1,38 +1,40 @@
 from typing import List
-
 from calculator.calculation import Calculation
 from calculator.history import History
 
 
 class CalculationHistory:
     """
-    Manages a history of calculations and provides methods for filtering and interaction.
+    Manages a shared history of calculations and provides static methods for filtering and interaction.
     """
+    _history: History[Calculation] = History[Calculation]()
 
-    def __init__(self):
-        """Initializes the calculation history with an empty History of Calculation objects."""
-        self.history = History[Calculation]()
+    @staticmethod
+    def add_calculation(calculation: Calculation) -> None:
+        """
+        Adds a calculation to the history.
+        """
+        CalculationHistory._history.add_item(calculation)
 
-    def add_calculation(self, calculation: Calculation):
-        """Adds a calculation to the history."""
-        self.history.add_item(calculation)
+    @staticmethod
+    def get_all_calculations() -> List[Calculation]:
+        """
+        Returns all calculations in the history.
+        """
+        return CalculationHistory._history.get_items()
 
-    def get_all_calculations(self) -> List[Calculation]:
-        """Returns all calculations in the history."""
-        return self.history.get_items()
-
-    def filter_by_operation_name(self, operation_name: str) -> List[Calculation]:
+    @staticmethod
+    def filter_by_operation_name(operation_name: str) -> List[Calculation]:
         """
         Filters calculations by operation name.
-
-        Args:
-            operation_name (str): The name of the operation to filter by.
-
-        Returns:
-            List[Calculation]: A list of calculations that match the operation name.
         """
-        return self.history.filter_item(lambda calc: calc.operation.__name__ == operation_name)
+        return CalculationHistory._history.filter_item(
+            lambda calc: calc.operation.__name__ == operation_name
+        )
 
-    def clear_history(self):
-        """Clears all calculations from the history."""
-        self.history.clear()
+    @staticmethod
+    def clear_history() -> None:
+        """
+        Clears all calculations from the history.
+        """
+        CalculationHistory._history.clear()
