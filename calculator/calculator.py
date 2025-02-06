@@ -1,10 +1,14 @@
 from calculator.calculation import Calculation
 from calculator.operations import add, subtract, multiply, divide
+from calculator.calculation_history import CalculationHistory
 
 class Calculator:
+    _history = CalculationHistory
+
     @staticmethod
     def perform_operation(operation, a: float, b: float) -> float:
         calculation = Calculation(operation, a, b)
+        Calculator._history.add_calculation(calculation)
         return calculation.perform_operation()
 
     @staticmethod
