@@ -97,3 +97,18 @@ def test_filter_empty_history():
     assert filtered_calcs == [], (
         "Expected an empty list when filtering an empty history."
     )
+
+def test_get_last():
+    """
+    Test that the get_last method returns the last calculation in the history.
+    """
+    calc1 = Calculation(mock_add, 1, 2)
+    calc2 = Calculation(mock_subtract, 5, 3)
+
+    CalculationHistory.add_calculation(calc1)
+    CalculationHistory.add_calculation(calc2)
+
+    last_calc = CalculationHistory.get_last()
+    assert last_calc == calc2, (
+        "get_last did not return the last calculation in the history."
+    )
