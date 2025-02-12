@@ -1,31 +1,18 @@
 """Tests for the Calculation class."""
+# pylint: disable=redefined-outer-name, invalid-name
+# Fixtures; a, b parameters
+
 import pytest
 from calculator.calculation import Calculation
-from calculator.operations import add, multiply, divide, subtract
+from calculator.operations import divide
 
-def test_addition():
-    """Test that addition returns the correct sum."""
-    calc = Calculation(add, 3.0, 4.0)
-    result = calc.perform_operation()
-    assert result == 7.0, f"Expected 7.0, got {result}"
 
-def test_multiplication():
-    """Test that multiplication returns the correct product."""
-    calc = Calculation(multiply, 3.0, 4.0)
+def test_calculation(a, b, operation, expected):
+    """Test that Calculation performs the correct operation."""
+    calc = Calculation(operation, a, b)
     result = calc.perform_operation()
-    assert result == 12.0, f"Expected 12.0, got {result}"
+    assert result == expected, f"Expected {expected}, got {result}"
 
-def test_subtraction():
-    """Test that subtraction returns the correct difference."""
-    calc = Calculation(subtract, 3.0, 4.0)
-    result = calc.perform_operation()
-    assert result == -1.0, f"Expected -1.0, got {result}"
-
-def test_division():
-    """Test that division returns the correct quotient."""
-    calc = Calculation(divide, 10.0, 2.0)
-    result = calc.perform_operation()
-    assert result == 5.0, f"Expected 5.0, got {result}"
 
 def test_division_by_zero():
     """Test that division by zero raises ZeroDivisionError."""

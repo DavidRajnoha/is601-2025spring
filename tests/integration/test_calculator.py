@@ -17,37 +17,25 @@ def clear_calc_history():
     yield
     CalculationHistory.clear_history()
 
-@pytest.mark.parametrize("a, b, expected", [
-    (2, 2, 4),
-    (3, 5, 8),
-])
+
 def test_add(a, b, expected):
     """Test addition."""
     result = Calculator.add(a, b)
     assert result == expected, f"Addition: Expected {expected} but got {result}"
 
-@pytest.mark.parametrize("a, b, expected", [
-    (2, 2, 0),
-    (5, 3, 2),
-])
+
 def test_subtract(a, b, expected):
     """Test subtraction."""
     result = Calculator.subtract(a, b)
     assert result == expected, f"Subtraction: Expected {expected} but got {result}"
 
-@pytest.mark.parametrize("a, b, expected", [
-    (2, 3, 6),
-    (4, 5, 20),
-])
+
 def test_multiply(a, b, expected):
     """Test multiplication."""
     result = Calculator.multiply(a, b)
     assert result == expected, f"Multiplication: Expected {expected} but got {result}"
 
-@pytest.mark.parametrize("a, b, expected", [
-    (2, 2, 1),
-    (10, 2, 5),
-])
+
 def test_divide(a, b, expected):
     """Test division."""
     result = Calculator.divide(a, b)
