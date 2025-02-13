@@ -5,7 +5,6 @@ This module contains the fixtures for the calculator operations.
 # pylint: disable=comparison-with-callable
 
 from decimal import Decimal
-
 from faker import Faker
 from calculator.operations import add, subtract, multiply, divide
 
@@ -53,7 +52,11 @@ def pytest_addoption(parser):
     """
     Add option to generate test data.
     """
-    parser.addoption("--num-records", action="store", default=50,
+    parser.addoption("--num-records",
+                     "--num_records",
+                     action="store",
+                     default=50,
+                     type=int,
                      help="Number of records to generate")
 
 def pytest_generate_tests(metafunc):
