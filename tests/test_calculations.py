@@ -1,4 +1,6 @@
 """Tests for the Calculation class."""
+from decimal import Decimal
+
 # pylint: disable=redefined-outer-name, invalid-name
 # Fixtures; a, b parameters
 
@@ -16,6 +18,6 @@ def test_calculation(a, b, operation, expected):
 
 def test_division_by_zero():
     """Test that division by zero raises ZeroDivisionError."""
-    calc = Calculation(divide, 10.0, 0.0)
+    calc = Calculation(divide, Decimal("10.0"), Decimal("0.0"))
     with pytest.raises(ZeroDivisionError):
         calc.perform_operation()

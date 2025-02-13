@@ -1,15 +1,15 @@
+from decimal import Decimal
 
-
-def add(a: float, b: float) -> float:
+def add(a: Decimal, b: Decimal) -> Decimal:
     return a + b
 
-def subtract(a: float, b: float) -> float:
+def subtract(a: Decimal, b: Decimal) -> Decimal:
     return a - b
 
-def multiply(a: float, b: float) -> float:
+def multiply(a: Decimal, b: Decimal) -> Decimal:
     return a * b
 
-def divide(a: float, b: float) -> float:
+def divide(a: Decimal, b: Decimal) -> Decimal:
     if b == 0:
         raise ZeroDivisionError("Cannot divide by zero")
 
