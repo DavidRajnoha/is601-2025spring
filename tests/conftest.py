@@ -60,6 +60,9 @@ def pytest_generate_tests(metafunc):
     """
     Inject test data into the test functions.
     """
+    if metafunc.function.__name__ in ["test_entrypoint"]:
+        return
+
     if ({"a", "b", "expected"}.intersection(set(metafunc.fixturenames))
             and "operation" in metafunc.fixturenames):
         num_records = metafunc.config.getoption("num_records")
