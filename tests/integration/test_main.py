@@ -1,3 +1,7 @@
+"""
+This module contains integration tests for the main file.
+"""
+# pylint: disable=invalid-name
 import sys
 import os
 import subprocess
@@ -26,6 +30,6 @@ def test_entrypoint(a, b, operation, expected_output):
     Call the script via subprocess using the current Python interpreter.
     """
     result = subprocess.run([sys.executable, SCRIPT_PATH, a, b, operation],
-                            capture_output=True, text=True)
+                            capture_output=True, text=True, check=False)
     output = result.stdout.strip()
     assert output == expected_output, f"Got {output!r} instead of {expected_output!r}"
