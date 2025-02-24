@@ -1,8 +1,10 @@
 """
 This module contains the App class which is responsible for running the application.
 """
-from calculator.command.command import GreetCommand, ExitException, ExitCommand
+from calculator.command.command import ExitException
 from calculator.command.command_handler import CommandHandler
+import calculator.command.commands as commands_package
+
 
 
 class App:
@@ -10,13 +12,7 @@ class App:
     App class is responsible for running the application.
     """
     command_handler = CommandHandler()
-
-    def __init__(self):
-        """
-        Initializes the application with default commands.
-        """
-        self.command_handler.register("greet", GreetCommand())
-        self.command_handler.register("exit", ExitCommand())
+    command_handler.load_commands(commands_package)
 
     def run(self):
         """
