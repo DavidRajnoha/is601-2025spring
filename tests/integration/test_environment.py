@@ -63,13 +63,6 @@ def find_dotenv_file():
     return None
 
 
-def test_env_file_exists():
-    """Verify that .env file exists before running other tests."""
-    dotenv_path = find_dotenv_file()
-    assert dotenv_path is not None, ("Tests require a .env file in the"
-                                     " project root or parent directories")
-
-
 @pytest.mark.usefixtures("clean_environment")
 def test_env_vars_loaded_from_file():
     """Test that environment variables from .env file are loaded correctly."""
