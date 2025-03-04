@@ -6,6 +6,7 @@ import os
 from calculator.command.command import ExitException
 from calculator.command.command_handler import CommandHandler
 import calculator.command.commands as commands_package
+from dotenv import load_dotenv
 import logging
 import logging.config
 
@@ -15,6 +16,7 @@ class App:
     App class is responsible for running the application.
     """
     def __init__(self):
+        load_dotenv()
         self.configure_logging()
         self.command_handler = CommandHandler()
 
