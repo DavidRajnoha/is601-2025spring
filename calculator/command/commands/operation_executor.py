@@ -3,6 +3,7 @@ This module contains the OperationExecutor class, which encapsulates the shared 
 """
 from decimal import Decimal, InvalidOperation
 
+import logging
 
 def _get_decimal_input(prompt: str) -> Decimal:
     raw_input = input(prompt)
@@ -32,10 +33,14 @@ class OperationExecutor:
             return
 
         try:
+            logging.info(f"Executing {self.operation_name} operation with inputs: {a}, {b}")
             result = self.operation_callable(a, b)
+            logging.info(f"Result of {self.operation_name}: {result}")
             print(f"Result of {self.operation_name}: {result}")
         except ZeroDivisionError:
+            logging.error("Division by zero.")
             print("Error: Division by zero.")
         except Exception as e:
+            logging.error(f"An error occurred: {e}")
             print(f"An error occurred: {e}")
 

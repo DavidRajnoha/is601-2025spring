@@ -1,3 +1,4 @@
+import logging
 from typing import List
 from calculator.calculation import Calculation
 from calculator.history import History
@@ -14,6 +15,7 @@ class CalculationHistory:
         """
         Adds a calculation to the history.
         """
+        logging.debug(f"Adding calculation to history: {calculation}")
         CalculationHistory._history.add_item(calculation)
 
     @staticmethod
@@ -21,6 +23,7 @@ class CalculationHistory:
         """
         Returns all calculations in the history.
         """
+        logging.debug("Getting all calculations from history")
         return CalculationHistory._history.get_items()
 
     @staticmethod
@@ -28,6 +31,7 @@ class CalculationHistory:
         """
         Filters calculations by operation name.
         """
+        logging.debug(f"Filtering calculations by operation name: {operation_name}")
         return CalculationHistory._history.filter_item(
             lambda calc: calc.operation.__name__ == operation_name
         )
@@ -37,6 +41,7 @@ class CalculationHistory:
         """
         Returns the last calculation in the history.
         """
+        logging.debug("Getting last calculation from history")
         return CalculationHistory._history.get_items()[-1]
 
     @staticmethod
@@ -44,4 +49,5 @@ class CalculationHistory:
         """
         Clears all calculations from the history.
         """
+        logging.info("Clearing calculation history")
         CalculationHistory._history.clear()

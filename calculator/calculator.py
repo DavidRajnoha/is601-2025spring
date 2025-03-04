@@ -3,11 +3,14 @@ from calculator.operations import add, subtract, multiply, divide
 from calculator.calculation_history import CalculationHistory
 from decimal import Decimal
 
+import logging
+
 class Calculator:
     _history = CalculationHistory
 
     @staticmethod
     def perform_operation(operation, a: Decimal, b: Decimal) -> Decimal:
+        logging.debug(f"Performing operation: {operation.__name__}({a}, {b})")
         calculation = Calculation(operation, a, b)
         Calculator._history.add_calculation(calculation)
         return calculation.perform_operation()
